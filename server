@@ -8,9 +8,6 @@ TAMANHO_BUFFER = 1024
 MAX_NUMEROS = 20
 
 def calcular(operacao, numeros_str):
-    """
-    Realiza o cálculo da operação solicitada.
-    """
     try:
         # Converte a string de números em uma lista de números flutuantes
         numeros = [float(n) for n in numeros_str.split()]
@@ -22,12 +19,12 @@ def calcular(operacao, numeros_str):
             resultado = sum(numeros)
         elif operacao == 'subtracao':
             if not numeros: return "ERRO: Subtração requer pelo menos um número."
-            # Subtrai o primeiro número pela soma dos restantes
-            resultado = numeros[0] - sum(numeros[1:])
+            soma = sum(numeros) - numeros[0]
+            resultado = numeros[0] - soma
         elif operacao == 'multiplicacao':
             resultado = 1.0
             for num in numeros:
-                resultado *= num
+                resultado = resultado * num
         elif operacao == 'divisao':
             if len(numeros) < 2:
                 return "ERRO: Divisão requer pelo menos dois números (dividendo e divisor)."
@@ -37,7 +34,7 @@ def calcular(operacao, numeros_str):
             for divisor in numeros[1:]:
                 if divisor == 0:
                     return "ERRO: Divisão por zero não permitida."
-                resultado /= divisor
+                resultado = resultado / divisor
         else:
             return "ERRO: Operação inválida."
 
